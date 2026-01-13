@@ -1,0 +1,57 @@
+@prefix : <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# === FILMS ===
+:movie1 a :Movie ;
+    :fname "One-Eyed Jack" ;
+    :genre "Western" ;
+    :title "One-Eyed Jack: Return of the Cowboy" ;
+    :hasActor :actor1 ;
+    :hasActor :actor2 .
+
+:movie2 a :Movie ;
+    :fname "Double Trouble" ;
+    :genre "Action" ;
+    :hasActor :actor3 .
+
+# === ACTEURS ===
+:actor1 a :Person ;
+    :aname "Marlon Brandon" ;
+    rdfs:label "Brandon" .
+
+:actor2 a :Person ;
+    :aname "Clark Kent" ;
+    rdfs:label "Kent" .
+
+:actor3 a :Person ;
+    :aname "Goofy Superstar" ;
+    rdfs:label "Goofy" .
+
+# === LIEUX & STUDIOS ===
+:studio1 a :Studio ;
+    :loc :place1 ;
+    :produces :movie1 .
+
+:place1 a :Location ;
+    :lname "Hollywood" .
+
+:studio2 a :Studio ;
+    :loc :place2 ;
+    :produces :movie2 .
+
+:place2 a :Location ;
+    :lname "Paris" .
+
+# === rdfs:label pour les propriétés (scénario ressource/propriété) ===
+:fname rdfs:label "first name" .
+:aname rdfs:label "actor name" .
+:lname rdfs:label "location name" .
+:genre rdfs:label "genre" .
+:hasActor rdfs:label "has actor" .
+:produces rdfs:label "produces" .
+:loc rdfs:label "location" .
+:directedBy rdfs:label "director" .
+
+# === Liens implicites ===
+:movie1 :directedBy :actor1 .
